@@ -1,0 +1,66 @@
+/* Performance optimizations for animations and effects */
+
+/* Use hardware acceleration for moving elements */
+.ai-orb,
+.electric-trail,
+.parallax-layer,
+.magnetic {
+  will-change: transform;
+  transform: translateZ(0); /* Force GPU acceleration */
+}
+
+/* Reduce animation complexity */
+@media (prefers-reduced-motion: reduce), (max-width: 768px) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .scanline,
+  .glitch-overlay,
+  .circuit-bg,
+  .matrix-rain,
+  .electric-trail {
+    display: none !important;
+  }
+}
+
+/* Optimize animations for better performance */
+.scanline {
+  background-size: 100% 4px; /* Reduce scanline density */
+  opacity: 0.3; /* Reduce opacity */
+}
+
+.circuit-bg {
+  background-size: 300px 300px; /* Increase pattern size to reduce detail */
+  opacity: 0.05; /* Reduce opacity */
+}
+
+/* Optimize rendering for cursor effects */
+.ai-orb .orb-inner {
+  box-shadow: 0 0 10px 2px rgba(0, 240, 255, 0.5); /* Reduce glow intensity */
+}
+
+/* Optimize ripple animation */
+.ripple {
+  animation-duration: 0.6s !important; /* Faster animation */
+}
+
+/* Optimize glitch effect */
+.glitching {
+  animation-duration: 0.2s !important; /* Faster animation */
+}
+
+/* Optimize Three.js canvas */
+canvas {
+  image-rendering: optimizeSpeed; /* Prioritize speed over quality */
+}
+
+/* Reduce paint complexity for gradients */
+.gradient-text,
+.cyber-button-primary,
+.cyber-card {
+  transform: translateZ(0); /* Force GPU acceleration for gradient elements */
+}
