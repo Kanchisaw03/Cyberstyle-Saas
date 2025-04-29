@@ -6,7 +6,7 @@ import * as THREE from 'three';
 
 export default function ParticlesBackground() {
   const ref = useRef();
-  // Reduced particle count from 5000 to 2000
+  // Reduced particle count from 5000 to 2000 for better performance
   const [sphere] = useState(() => random.inSphere(new Float32Array(2000), { radius: 1.5 }));
   
   // Create a grid of points for the cyber grid with reduced density

@@ -157,7 +157,7 @@ export default function App() {
 
   // Memoize the main components to prevent unnecessary re-renders
   const MemoizedParticlesBackground = useMemo(() => <ParticlesBackground />, []);
-  const MemoizedCyberpunkAnimations = useMemo(() => <CyberpunkAnimations mousePosition={mousePosition} />, [mousePosition]);
+  const MemoizedCyberpunkAnimations = useMemo(() => <CyberpunkAnimations />, []);
   
   // Memoize the navbar to prevent re-renders when scrolling
   const MemoizedNavbar = useMemo(() => <Navbar />, []);
@@ -287,6 +287,19 @@ export default function App() {
         >
           <div className="orb-inner"></div>
         </div>
+      )}
+      
+      {/* Electric trail effect */}
+      {window.innerWidth > 768 && (
+        <div 
+          className="electric-trail fixed pointer-events-none z-40"
+          style={{
+            left: 0,
+            top: 0,
+            transform: 'translate(0, 0) translate(-50%, -50%)',
+            willChange: 'transform'
+          }}
+        ></div>
       )}
       
       {/* Glitch overlay for cyberpunk effect - Reduced intensity */}
